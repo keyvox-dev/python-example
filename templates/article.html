@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://cdn.tailwindcss.com"></script>
+        <title>{{ article.data.title }}</title>
+    </head>
+    <body class="bg-green-50">
+        <header class="bg-white">
+            <div class="container mx-auto py-3 px-56">
+                <nav class="flex justify-between">
+                    <a href="/">
+                        <img src="/logo.png" alt="Logo" style="width: 60px;">
+                    </a>
+                    <div class="flex items-center text-2xl">
+                        Rest of your awesome header
+                    </div>
+                </nav>
+            </div>
+        </header>
+        <div class="container mx-auto py-9 px-72">
+            <article class="card bg-gray-50 rounded-lg shadow-sm pb-3">
+                <div class="card-body px-8 py-3">
+                    <small>{{ article.data.created_at }}</small>
+                    <h1 class="text-3xl my-6 font-black">{{ article.data.title }}</h1>
+                    <div>
+                        <img src="{{ article.data.background }}" alt="" style="width: 500px;">
+                    </div>
+
+                    <div class="my-3">
+                        {% for item in article.data.content %}
+                            {{ item | safe }}
+                        {% endfor %}
+                    </div>
+                </div>
+            </article>
+        </div>
+    </body>
+</html>
